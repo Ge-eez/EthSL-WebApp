@@ -31,6 +31,30 @@
 
   <title>blink</title>
   <link rel="manifest" href="manifest.json">
+  <script type="module">
+
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAU8_zacrj6F1YltkTlLl8wXilt98GFiu0",
+  authDomain: "blinkweb-3bbce.firebaseapp.com",
+  projectId: "blinkweb-3bbce",
+  storageBucket: "blinkweb-3bbce.appspot.com",
+  messagingSenderId: "334336429899",
+  appId: "1:334336429899:web:332cab1d840c66f9ade2ce",
+  measurementId: "G-9M0GPB3YS5"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+  </script>
 
   <script>
     // The value below is injected by flutter build, do not touch.
