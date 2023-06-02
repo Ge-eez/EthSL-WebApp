@@ -56,7 +56,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    FlutterLogo(size: 100, colors: Colors.white),
+                    FlutterLogo(size: 100, color: Colors.white),
                     SizedBox(height: 40),
                     TextFormField(
                       decoration: InputDecoration(
