@@ -120,6 +120,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'components/login_image.dart';
 import 'components/avatar_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:blink/Dashboard/mainDashboard.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -145,11 +147,13 @@ class _LoginPageState extends State<LoginPage> {
 
     await Auth().signInWithEmailAndPassword(email, password);
 
+     Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Dashboard()),
+              );
     // setState(() => _loading = false);
   }
-  @override
-  
-
+ 
 
   @override
   Widget build(BuildContext context) {
