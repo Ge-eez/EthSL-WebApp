@@ -1,7 +1,7 @@
 import 'package:blink/dashboard/models/MyFiles.dart';
 import 'package:blink/dashboard/responsive.dart';
 import 'package:flutter/material.dart';
-
+import 'package:blink/Dashboard/Screens/AdminAccount/createAccount.dart';
 import '../../../constants.dart';
 import 'file_info_card.dart';
 
@@ -30,9 +30,14 @@ class MyFiles extends StatelessWidget {
                       defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateAccount()),
+                );
+              },
               icon: Icon(Icons.add),
-              label: Text("Add New"),
+              label: Text("Add New Admin"),
             ),
           ],
         ),
