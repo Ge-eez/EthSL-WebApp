@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:blink/Dashboard/constants.dart';
+import 'admin_controller/adminController.dart';
 
 class AdminForm extends StatefulWidget {
   @override
@@ -18,39 +19,9 @@ class _CreateAccountFormState extends State<AdminForm> {
   final _passwordController = TextEditingController();
 
   bool _passwordVisible = false;
+  String _errorMessage = '';
 
-  Future<void> registerUser() async {
-    try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .set({
-        'username': _usernameController.text,   
-        'firstName': _firstNameController.text,
-        'lastName': _lastNameController.text,
-        'phone':_phoneNumberController.text,
-        'email': _emailController.text,
-        'password':_passwordController.text
-      });
-      Navigator.of(context).pop();
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
- 
-
-  @override
+   @override
   void dispose() {
     _usernameController.dispose();
     _firstNameController.dispose();
@@ -61,6 +32,48 @@ class _CreateAccountFormState extends State<AdminForm> {
     super.dispose();
   }
 
+
+
+  Future<void> registerUser() async {
+     final String userName = _usernameController.text;
+    final String firstName = _firstNameController.text;
+    final String lastName = _lastNameController.text;
+    final String email = _emailController.text;
+    final String phoneNumber = _phoneNumberController.text; 
+    final String password = _passwordController.text;
+
+    final adminData = {
+      'firstName': firstName,
+      'lastName': lastName,
+      'username' : userName,
+      'phone':phoneNumber,
+      'email': email,
+      'password': password,
+      
+    };
+
+    final adminService = AdminService();
+    final String message = await adminService.createAdminAccount(adminData);
+
+    if (message.isEmpty) {
+      // Account created successfully, show success message or navigate to another screen
+      setState(() {
+        _errorMessage = 'Admin account created successfully';
+      });
+    } else {
+      setState(() {
+        _errorMessage = message;
+      });
+    }
+  }
+  
+  @override
+  
+  
+  
+ 
+
+ 
   @override
   Widget build(BuildContext context) {
     return Container(
