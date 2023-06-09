@@ -1,5 +1,10 @@
+import 'package:blink/dashboard/mainDashboard.dart';
+import 'package:blink/dashboard/screens/AdminAccount/editprofile.dart';
+import 'package:blink/dashboard/screens/AdminAccount/userPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:blink/dashboard/screens/AdminAccount/createLesson.dart';
+import 'package:blink/dashboard/screens/AdminAccount/createQuiz.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -17,42 +22,61 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             title: "Dashboard",
             svgSrc: "assets/icons/menu_dashboard.svg",
-            press: () {},
+            press: () { Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Dashboard()),
+                );},
           ),
           DrawerListTile(
-            title: "Transaction",
+            title: "Lessons",
             svgSrc: "assets/icons/menu_tran.svg",
-            press: () {},
+            press: () {},  
           ),
           DrawerListTile(
-            title: "Task",
+            title: "Quizzes",
             svgSrc: "assets/icons/menu_task.svg",
             press: () {},
           ),
           DrawerListTile(
-            title: "Documents",
+            title: "Create Lesson",
             svgSrc: "assets/icons/menu_doc.svg",
-            press: () {},
+            press: () {
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context)=> CreateLesson()),
+            );},
           ),
           DrawerListTile(
-            title: "Store",
+            title: "Create Quizzes ",
             svgSrc: "assets/icons/menu_store.svg",
-            press: () {},
+            press: () {
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context)=> CreateQuiz()),
+            );
+            },
           ),
-          DrawerListTile(
-            title: "Notification",
-            svgSrc: "assets/icons/menu_notification.svg",
-            press: () {},
-          ),
+          // DrawerListTile(
+          //   title: "Users",
+          //   svgSrc: "assets/icons/menu_notification.svg",
+          //   press: () {Navigator.push(
+          //         context,
+          //         MaterialPageRoute(builder: (context) => Userpage()),
+          //       );},
+          // ),
           DrawerListTile(
             title: "Profile",
             svgSrc: "assets/icons/menu_profile.svg",
-            press: () {},
+            press: () {
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context)=> EditProfile()),
+              );
+            }
           ),
           DrawerListTile(
             title: "Settings",
             svgSrc: "assets/icons/menu_setting.svg",
-            press: () {},
+            press: () {
+
+            },
           ),
         ],
       ),
