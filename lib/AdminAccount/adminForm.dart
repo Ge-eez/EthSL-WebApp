@@ -49,6 +49,7 @@ class _CreateAccountFormState extends State<AdminForm> {
       'phone':phoneNumber,
       'email': email,
       'password': password,
+      'role':'admin'
       
     };
 
