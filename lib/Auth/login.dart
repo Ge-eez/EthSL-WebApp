@@ -1,125 +1,11 @@
-// import 'package:flutter/material.dart';
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: LoginPage(),
-//   ));
-// }
-
-// class LoginPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         decoration: BoxDecoration(
-//           gradient: LinearGradient(
-//             begin: Alignment.topLeft,
-//             end: Alignment.bottomRight,
-//             colors: [Color(0xFFC33764), Color(0xFF1D2671)],
-//           ),
-//         ),
-//         child: Row(
-//           children: [
-//             Expanded(
-//               flex: 1,
-//               child: Container(
-//                 padding: EdgeInsets.all(40),
-//                 child: Column(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       'Welcome Back!',
-//                       style: TextStyle(
-//                         fontSize: 30,
-//                         fontWeight: FontWeight.bold,
-//                         color: Colors.white,
-//                       ),
-//                     ),
-//                     SizedBox(height: 10),
-//                     Text(
-//                       'Login to continue',
-//                       style: TextStyle(
-//                         fontSize: 18,
-//                         color: Colors.white,
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//             Expanded(
-//               flex: 1,
-//               child: Container(
-//                 padding: EdgeInsets.all(40),
-//                 child: Column(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   crossAxisAlignment: CrossAxisAlignment.stretch,
-//                   children: [
-//                     FlutterLogo(size: 100,color: Colors.white),
-//                     SizedBox(height: 40),
-//                     TextFormField(
-//                       decoration: InputDecoration(
-//                         labelText: 'Email',
-//                         labelStyle: TextStyle(color: Colors.white),
-//                         enabledBorder: OutlineInputBorder(
-//                           borderSide: BorderSide(color: Colors.white),
-//                         ),
-//                         focusedBorder: OutlineInputBorder(
-//                           borderSide: BorderSide(color: Colors.white),
-//                         ),
-//                       ),
-//                       style: TextStyle(color: Colors.white),
-//                     ),
-//                     SizedBox(height: 20),
-//                     TextFormField(
-//                       obscureText: true,
-//                       decoration: InputDecoration(
-//                         labelText: 'Password',
-//                         labelStyle: TextStyle(color: Colors.white),
-//                         enabledBorder: OutlineInputBorder(
-//                           borderSide: BorderSide(color: Colors.white),
-//                         ),
-//                         focusedBorder: OutlineInputBorder(
-//                           borderSide: BorderSide(color: Colors.white),
-//                         ),
-//                       ),
-//                       style: TextStyle(color: Colors.white),
-//                     ),
-//                     SizedBox(height: 30),
-//                     ElevatedButton(
-//                       onPressed: () {},
-//                       style: ElevatedButton.styleFrom(
-//                         primary: Colors.white,
-//                         padding: EdgeInsets.symmetric(vertical: 16),
-//                       ),
-//                       child: Text(
-//                         'Log in',
-//                         style: TextStyle(
-//                           fontSize: 18,
-//                           color: Color(0xFF1D2671),
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-
 import 'package:flutter/material.dart';
 import 'auth_controller/authController.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'components/login_image.dart';
 import 'components/avatar_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:blink/Dashboard/mainDashboard.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -134,22 +20,26 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  handleSubmit() async {
-    if (!_formKey.currentState!.validate()) return;
-    final email = _emailController.value.text;
-    final password = _passwordController.value.text;
+ Future<void> handleSubmit() async {
+   
+    final email = _emailController.text;
+    final password = _passwordController.text;
+    String _errorMessage = '';
+    final signIn = Login();
+    final String message = await signIn.login(email, password);
+    if (message == 'success'){
+      Navigator.pushNamed(context, '/admin_dashboard');
 
-    // setState(() => _loading = true);
+    }
+    else{
+      setState(() {
+        _errorMessage = message;
+      });
+    }
 
-    //Check if is login or register
-
-    await Auth().signInWithEmailAndPassword(email, password);
-
-    // setState(() => _loading = false);
+    
   }
-  @override
   
-
 
   @override
   Widget build(BuildContext context) {

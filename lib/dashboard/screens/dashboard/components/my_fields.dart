@@ -1,7 +1,7 @@
 import 'package:blink/dashboard/models/MyFiles.dart';
 import 'package:blink/dashboard/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:blink/Dashboard/Screens/AdminAccount/createAccount.dart';
+import 'package:blink/AdminAccount/createAccount.dart';
 import '../../../constants.dart';
 import 'file_info_card.dart';
 
