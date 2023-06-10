@@ -1,9 +1,9 @@
 import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
 import 'package:blink/Dashboard/constants.dart';
-import 'package:blink/dashboard/screens/AdminAccount/LessonPage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
-import 'package:blink/dashboard/screens/AdminAccount/LessonPage.dart';
+import 'LessonPage.dart';
 
 class LessonDisplay extends StatelessWidget {
   @override

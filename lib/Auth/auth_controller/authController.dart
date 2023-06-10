@@ -1,8 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
 
-class Login{
+class Auth{
 Future<String> login(String email, String password) async {
   final String apiUrl = 'https://blink-backend-service.onrender.com/auth/login';
 
@@ -38,5 +39,12 @@ Future<void> saveTokenAndUserDetails(String token, Map<String, dynamic> user) as
   await prefs.setString('firstName', user['firstName']);
   await prefs.setString('lastName', user['lastName']);
   
+}
+
+
+Future<void> logout(BuildContext context) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.remove('userPreference');
+  Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
 }
 }

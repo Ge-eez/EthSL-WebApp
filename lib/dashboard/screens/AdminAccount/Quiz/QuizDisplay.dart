@@ -1,6 +1,6 @@
 import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
 import 'package:blink/Dashboard/constants.dart';
-import 'package:blink/dashboard/screens/AdminAccount/QuizPage.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Quiz/QuizPage.dart';
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
 

@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
     final email = _emailController.text;
     final password = _passwordController.text;
     String _errorMessage = '';
-    final signIn = Login();
+    final signIn = Auth();
     final String message = await signIn.login(email, password);
     if (message == 'success'){
       Navigator.pushNamed(context, '/admin_dashboard');
