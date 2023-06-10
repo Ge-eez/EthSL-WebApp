@@ -73,39 +73,18 @@ Future<void> _fetchLessons() async {
                 DataCell(Text(lesson.description)),
                 DataCell(Text(lesson.level)),
                 DataCell(Text(lesson.symbols.map((symbol) => symbol['representation']).join(', '))),
-                DataCell(Text(lesson.prerequisites.join(', '))),
+                DataCell(Text(lesson.prerequisites.map((prerequisite) => prerequisite['name']).join(', '))),
                 
                 DataCell(Row(
                   children: [
-                    
                     IconButton(
                       icon: const Icon(Icons.edit, color: Colors.deepPurple),
                       onPressed: () {},
                     ),
                     IconButton(
                       icon: const Icon(Icons.delete, color: Colors.deepPurple),
-                      onPressed: () {
-                        showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('My Custom Title'),
-          content: Text('My custom message'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-                      },
+                      onPressed: () {},
                     ),
-                    
-
                   ],
                 )),
               ],
