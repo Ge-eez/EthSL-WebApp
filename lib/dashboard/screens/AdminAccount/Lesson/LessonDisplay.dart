@@ -3,7 +3,14 @@ import 'package:blink/Dashboard/constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
-import 'LessonPage.dart';
+import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/createLesson.dart';
+import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/lessonForm.dart';
+import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
+import 'package:blink/Dashboard/constants.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Lesson/LessonPage.dart';
+import 'package:flutter/material.dart';
+import 'package:blink/dashboard/responsive.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Lesson/LessonPage.dart';
 
 class LessonDisplay extends StatelessWidget {
   @override
@@ -34,6 +41,13 @@ class LessonDisplay extends StatelessWidget {
                     child:Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        ElevatedButton(
+                        onPressed: (){
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context)=> CreateLesson()),
+              
+              ); },  child:const Text('Add new Lesson',)),
+                    
                         LessonPage()
                         ]
 
@@ -44,3 +58,4 @@ class LessonDisplay extends StatelessWidget {
     );
   }
 }
+

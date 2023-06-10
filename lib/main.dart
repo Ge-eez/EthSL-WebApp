@@ -7,11 +7,11 @@ import 'Dashboard/mainDashboard.dart';
 void main() async {
   
   runApp(MaterialApp(
-    home: LoginPage(),
+    home: Dashboard(),
     routes: {
     '/admin_dashboard': (context) => Dashboard(),
     '/createLesson':(context) => CreateLesson(),
-    '/login':(context) => LoginPage()
+    // '/login':(context) => LoginPage()
     
   },
   ));

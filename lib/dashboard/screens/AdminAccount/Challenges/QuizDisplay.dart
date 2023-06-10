@@ -1,10 +1,16 @@
 import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
 import 'package:blink/Dashboard/constants.dart';
+import 'package:blink/dashboard/screens/AdminAccount//Challenges/QuizPage.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Challenges/createQuiz.dart';
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
-import 'lessonForm.dart';
 
-class CreateLesson extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:blink/dashboard/responsive.dart';
+
+
+
+class QuizDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,18 +30,28 @@ class CreateLesson extends StatelessWidget {
                 // It takes 5/6 part of the screen
                  flex: 5,
             child: Container(
-              
               color: bgColor,
               child: Center(
                 child: SingleChildScrollView(
-child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: ConstrainedBox(constraints: BoxConstraints(maxWidth: 800),
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: ConstrainedBox(constraints: BoxConstraints(),
                     child:Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                         
+                        ElevatedButton(
+                        onPressed: (){
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context)=> CreateQuiz()),
+              
+              );
+              },  child:const Text('Add new Challenge',)),
+                    
+                    
                        
-                        LessonForm()
+                        Quizpage()
+                       
                         ]
 
                 ))))))),
