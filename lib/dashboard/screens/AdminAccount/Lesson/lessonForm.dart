@@ -310,23 +310,78 @@
 
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+import '../../../constants.dart';
+import 'lesson_controller/lesson_controller.dart';
 
-void main() => runApp(LessonForm());
+// void main() => runApp(LessonForm());
 
 
 
 class LessonForm extends StatefulWidget {
-  const LessonForm({Key? key}) : super(key: key);
-
+ 
   @override
-  State<LessonForm> createState() => _LessonFormState();
+  _LessonFormState createState() => _LessonFormState();
 }
 
 class _LessonFormState extends State<LessonForm> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  TextEditingController lettersController=TextEditingController();
+  final _formKey = GlobalKey<FormState>(); 
+  final _nameController = TextEditingController();
+  final _descriptionController = TextEditingController();
+  final _lettersController=TextEditingController();
+   String _errorMessage = '';
+   String? _level;
+  //  String? _prerequisites;
+  List<dynamic> _lessons = [];
+   final lesson = Lesson();
+   @override
+   void initState(){
+    super.initState();
+    _fetchLessons();
+   }
+
+   Future<void> _fetchLessons() async {
+    final lessons = await lesson.fetchLessons();
+    setState(() {
+      _lessons = lessons;
+    });
+  }
+
+   
+
+ 
+
+
+  void submit() async{
+    
+      final letters = _lettersController.text.split(',').map((e) => e.trim()).toList();
+
+      final lessonData = {
+        'name': _nameController.text,
+        'description': _descriptionController.text,
+        'letters': letters,
+        'level':_level,
+        // 'prerequisites':_prerequisites
+      };
+
+         
+         final String message = await lesson.createLesson(lessonData);
+
+    if (message.isEmpty) {
+      // Account created successfully, show success message or navigate to another screen
+      setState(() {
+        _errorMessage = 'Lesson created successfully';
+      });
+    } else {
+      setState(() {
+        _errorMessage = message;
+      });
+    }
+
+     }
+     
+       
+
+     @override
   
 
   @override
@@ -338,6 +393,7 @@ class _LessonFormState extends State<LessonForm> {
         borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
       child: Form(
+        key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -352,7 +408,7 @@ class _LessonFormState extends State<LessonForm> {
                       ), ), 
             SizedBox(height:10),
             TextFormField(
-              controller: nameController,
+              controller: _nameController,
               decoration: InputDecoration(
                 hintText: 'Lesson name',
                 hintStyle: TextStyle(color: Colors.deepPurple),
@@ -371,7 +427,7 @@ class _LessonFormState extends State<LessonForm> {
             TextFormField(
               keyboardType: TextInputType.multiline,
               
-              controller: descriptionController,
+              controller: _descriptionController,
               decoration: InputDecoration(
                 hintText: 'Description',
                 hintStyle: TextStyle(color: Colors.deepPurple),
@@ -389,7 +445,7 @@ class _LessonFormState extends State<LessonForm> {
             SizedBox(height:10),
             TextFormField(
               keyboardType: TextInputType.text,
-              controller: lettersController,
+              controller: _lettersController,
               decoration: InputDecoration(
                 hintText: 'Letters',
                 hintStyle: TextStyle(color: Colors.deepPurple),
@@ -401,6 +457,33 @@ class _LessonFormState extends State<LessonForm> {
 
              SizedBox(
               height: 10,),
+             DropdownButtonFormField<String>(
+              value: _level,
+              onChanged: (value) => setState(() => _level = value),
+              items: ['Beginner', 'Intermediate', 'Advanced']
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                  .toList(),
+              decoration: InputDecoration(labelText: 'Level'),
+              validator: (value) =>
+                  value == null ? 'Please select a level' : null,
+            ), 
+
+              SizedBox(
+              height: 10,),
+            //   DropdownButtonFormField<String>(
+            //   value:_prerequisites,
+            //   onChanged:(value)=>setState(()=>_prerequisites=value),
+            //   items:_lessons.map((e)=>DropdownMenuItem(value:e['_id'] as String,child:Text(e['name']))).toList(),
+            //   decoration:
+            //       InputDecoration(labelText:'Prerequisite Lesson'),
+            //   validator:(value)=>
+            //       value==null?'Please select a prerequisite lesson':null,
+            // ),
+
+
+
+              SizedBox(
+              height: 10,),
             
                ElevatedButton( 
                 style: ElevatedButton.styleFrom(
@@ -410,11 +493,7 @@ class _LessonFormState extends State<LessonForm> {
                 ),
                   child: const Text(
                     'Save',),
-                  onPressed: () {
-                    print(nameController.text);
-                    print(descriptionController.text);
-                    print(lettersController.text);
-                  },
+                  onPressed: submit
                   
                 ),
               

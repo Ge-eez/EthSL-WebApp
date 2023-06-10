@@ -4,9 +4,10 @@ import 'package:blink/dashboard/screens/AdminAccount/LessonDisplay.dart';
 import 'package:blink/dashboard/screens/AdminAccount/LessonPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:blink/dashboard/screens/AdminAccount/createLesson.dart';
 import 'package:blink/dashboard/screens/AdminAccount/createQuiz.dart';
 import 'package:blink/dashboard/screens/AdminAccount/QuizDisplay.dart';
+import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/createLesson.dart';
+import 'package:blink/dashboard/screens/AdminAccount/createQuiz.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -50,8 +51,8 @@ class SideMenu extends StatelessWidget {
             svgSrc: "assets/icons/menu_doc.svg",
             press: () {
               Navigator.push(context, 
-              MaterialPageRoute(builder: (context)=> CreateLesson()),
-            );},
+              MaterialPageRoute(builder: (context)=> CreateLesson()),);
+            },
           ),
           DrawerListTile(
             title: "Create Quizzes ",
@@ -76,6 +77,23 @@ class SideMenu extends StatelessWidget {
               );
             }
           ),
+          // DrawerListTile(
+          //   title: "Users",
+          //   svgSrc: "assets/icons/menu_notification.svg",
+          //   press: () {Navigator.push(
+          //         context,
+          //         MaterialPageRoute(builder: (context) => Userpage()),
+          //       );},
+          // ),
+          // DrawerListTile(
+          //   title: "Profile",
+          //   svgSrc: "assets/icons/menu_profile.svg",
+          //   press: () {
+          //     Navigator.push(context, 
+          //     MaterialPageRoute(builder: (context)=> EditProfile()),
+          //     );
+          //   }
+          // ),
           DrawerListTile(
             title: "Settings",
             svgSrc: "assets/icons/menu_setting.svg",
