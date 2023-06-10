@@ -49,6 +49,7 @@ dependencies:
   sqflite: ^2.2.8+4
   mongo_dart: ^0.9.1
   shared_preferences: ^2.1.1
+  multi_select_flutter: ^4.1.3
 
 dev_dependencies:
   flutter_test:

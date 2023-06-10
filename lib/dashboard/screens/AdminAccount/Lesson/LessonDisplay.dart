@@ -34,8 +34,7 @@ class LessonDisplay extends StatelessWidget {
                     child:Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                       
-                        Lessonpage()
+                        LessonPage()
                         ]
 
                 ))))))),
