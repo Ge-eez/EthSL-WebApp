@@ -17,7 +17,7 @@ class _LessonFormState extends State<LessonForm> {
   final _formKey = GlobalKey<FormState>(); 
   final _nameController = TextEditingController();
   final _descriptionController = TextEditingController();
-  final _lettersController=TextEditingController();
+  final _symbolsController=TextEditingController();
    String _errorMessage = '';
    String? _level;
   String? _prerequisites;
@@ -49,7 +49,7 @@ Future<void> _fetchLessons() async {
 
   void submit() async{
     
-      final letters = _lettersController.text.split(',').map((e) => e.trim()).toList();
+      final letters = _symbolsController.text.split(',').map((e) => e.trim()).toList();
 
       final lessonData = {
         'name': _nameController.text,
