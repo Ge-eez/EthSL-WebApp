@@ -7,9 +7,9 @@ class CloudStorageInfo {
   final Color? color;
 
   CloudStorageInfo({
-    this.svgSrc,
+    // this.svgSrc,
     this.title,
-this.icon,
+// this.icon,
     this.numOfFiles,
     this.percentage,
     this.color,
@@ -20,7 +20,7 @@ List demoMyFiles = [
   CloudStorageInfo(
     title: "Admin Users",
     numOfFiles: 1328,
-    Icon(Icons.people_outlined,),
+    // Icon(Icons.people_outlined,),
  
     color: primaryColor,
     percentage: 35,
@@ -29,7 +29,7 @@ List demoMyFiles = [
   CloudStorageInfo(
     title: "Lessons",
     numOfFiles: 1328,
-    svgSrc: "assets/icons/one_drive.svg",
+    // svgSrc: "assets/icons/one_drive.svg",
    
     color: Color(0xFFA4CDFF),
     percentage: 10,
@@ -37,7 +37,7 @@ List demoMyFiles = [
   CloudStorageInfo(
     title: "Documents",
     numOfFiles: 5328,
-    svgSrc: "assets/icons/drop_box.svg",
+    // svgSrc: "assets/icons/drop_box.svg",
    
     color: Color(0xFF007EE5),
     percentage: 78,

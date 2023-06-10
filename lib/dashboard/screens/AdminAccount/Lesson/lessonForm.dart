@@ -133,7 +133,7 @@ Future<void> _fetchLessons() async {
             SizedBox(height:10),
             TextFormField(
               keyboardType: TextInputType.text,
-              controller: _lettersController,
+              controller: _symbolsController,
               decoration: InputDecoration(
                 hintText: 'Letters',
                 hintStyle: TextStyle(color: Colors.deepPurple),
@@ -145,16 +145,16 @@ Future<void> _fetchLessons() async {
 
              SizedBox(
               height: 10,),
-             DropdownButtonFormField<String>(
-              value: _level,
-              onChanged: (value) => setState(() => _level = value),
-              items: ['Beginner', 'Intermediate', 'Advanced']
-                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                  .toList(),
-              decoration: InputDecoration(labelText: 'Level'),
-              validator: (value) =>
-                  value == null ? 'Please select a level' : null,
-            ), 
+            //  DropdownButtonFormField<String>(
+            //   value: _level,
+            //   onChanged: (value) => setState(() => _level = value),
+            //   items: ['Beginner', 'Intermediate', 'Advanced']
+            //       .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+            //       .toList(),
+            //   decoration: InputDecoration(labelText: 'Level'),
+            //   validator: (value) =>
+            //       value == null ? 'Please select a level' : null,
+            // ), 
 
               SizedBox(
               height: 10,),

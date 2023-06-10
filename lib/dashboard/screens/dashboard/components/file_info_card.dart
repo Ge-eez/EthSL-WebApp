@@ -35,11 +35,11 @@ class FileInfoCard extends StatelessWidget {
                   color: info.color!.withOpacity(0.1),
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
-                child: SvgPicture.asset(
-                  info.svgSrc!,
-                  colorFilter: ColorFilter.mode(
-                      info.color ?? Colors.black, BlendMode.srcIn),
-                ),
+                // child: SvgPicture.asset(
+                //   // info.svgSrc!,
+                //   colorFilter: ColorFilter.mode(
+                //       info.color ?? Colors.black, BlendMode.srcIn),
+                // ),
               ),
               Icon(Icons.more_vert, color: Colors.white54)
             ],

@@ -11,7 +11,7 @@ class Lesson {
   final String level;
   final List prerequisites;
   final List symbols;
-  final String createdBy;
+  final Object createdBy;
   final String createdAt;
   final String updatedAt;
 
