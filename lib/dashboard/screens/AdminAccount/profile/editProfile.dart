@@ -2,9 +2,13 @@ import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
 import 'package:blink/Dashboard/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
-import 'lessonForm.dart';
+import 'package:blink/dashboard/screens/AdminAccount/profile/editProfileForm.dart';
 
-class CreateLesson extends StatelessWidget {
+
+
+
+class EditProfile extends StatelessWidget{
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +28,6 @@ class CreateLesson extends StatelessWidget {
                 // It takes 5/6 part of the screen
                  flex: 5,
             child: Container(
-              
               color: bgColor,
               child: Center(
                 child: SingleChildScrollView(
@@ -35,7 +38,7 @@ child: Padding(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                        
-                        LessonForm()
+                        EditProfileForm(adminId: '',)
                         ]
 
                 ))))))),
