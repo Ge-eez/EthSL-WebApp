@@ -18,8 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  @override
+   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();

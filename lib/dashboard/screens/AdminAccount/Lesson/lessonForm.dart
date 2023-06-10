@@ -17,21 +17,22 @@ class _LessonFormState extends State<LessonForm> {
   final _formKey = GlobalKey<FormState>(); 
   final _nameController = TextEditingController();
   final _descriptionController = TextEditingController();
-  final _symbolsController=TextEditingController();
-  final _levelController = TextEditingController();
-  List<Lesson> _lessons= [];
-  List<Lesson> _selectedPrequisites = [];
-  
+  final _lettersController=TextEditingController();
+   String _errorMessage = '';
+   String? _level;
+  String? _prerequisites;
+
+  List<Lesson> _lessons = [];
 @override
 void initState(){
   super.initState();
-  fetchLessons();
+  _fetchLessons();
 }
 
 Future<void> _fetchLessons() async {
-    final lesson = await fetchLessons();
+    final lessons = await fetchLessons();
     setState(() {
-      _lessons = lesson;
+      _lessons = lessons;
     });
   }
 
@@ -48,19 +49,14 @@ Future<void> _fetchLessons() async {
 
   void submit() async{
     
-      final name = _nameController.text;
-                final description = _descriptionController.text;
-                final symbols =
-                    _symbolsController.text.split(',').map((e) => e.trim()).toList();
-                final prerequisites = _selectedPrequisites;
-                final level = _levelController.text;
+      final letters = _lettersController.text.split(',').map((e) => e.trim()).toList();
 
       final lessonData = {
-        'name': name,
-        'description': description,
-        'symbols': symbols,
-        'level':level,
-        'prerequisites':prerequisites
+        'name': _nameController.text,
+        'description': _descriptionController.text,
+        'letters': letters,
+        'level':_level,
+        'prerequisites':_prerequisites
       };
 
         
@@ -159,7 +155,7 @@ Future<void> _fetchLessons() async {
               SizedBox(
               height: 10,),
 
-
+              
             
 
 
