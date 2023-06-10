@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'auth_controller/authController.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'components/login_image.dart';
 import 'components/avatar_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
