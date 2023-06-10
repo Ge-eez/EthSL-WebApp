@@ -7,7 +7,7 @@ import 'package:blink/dashboard/responsive.dart';
 
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
-import 'LessonPage.dart';
+
 
 
 class QuizDisplay extends StatelessWidget {
