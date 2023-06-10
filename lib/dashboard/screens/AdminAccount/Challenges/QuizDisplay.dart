@@ -5,6 +5,10 @@ import 'package:blink/dashboard/screens/AdminAccount/Challenges/createQuiz.dart'
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
 
+import 'package:flutter/material.dart';
+import 'package:blink/dashboard/responsive.dart';
+import 'LessonPage.dart';
+
 
 class QuizDisplay extends StatelessWidget {
   @override
@@ -47,6 +51,7 @@ class QuizDisplay extends StatelessWidget {
                     
                        
                         Quizpage()
+                       
                         ]
 
                 ))))))),

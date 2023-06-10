@@ -1,10 +1,13 @@
 import 'package:blink/Dashboard/constants.dart';
 import 'package:flutter/material.dart';
 
+<<<<<<< HEAD:lib/dashboard/screens/AdminAccount/Challenges/QuizPage.dart
 
 
 
+=======
 import '../../../constants.dart';
+>>>>>>> b118e25d4c0eca57bc09ca486cecd150bccd4d10:lib/dashboard/screens/AdminAccount/Quiz/QuizPage.dart
 class Quizpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,6 @@ import 'components/avatar_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:blink/Dashboard/mainDashboard.dart';
 
-
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -20,54 +19,49 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
- Future<void> handleSubmit() async {
-   
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> handleSubmit() async {
     final email = _emailController.text;
     final password = _passwordController.text;
     String _errorMessage = '';
-    final signIn = Login();
+    final signIn = Auth();
     final String message = await signIn.login(email, password);
-    if (message == 'success'){
+    if (message == 'success') {
       Navigator.pushNamed(context, '/admin_dashboard');
-
-    }
-    else{
+    } else {
       setState(() {
         _errorMessage = message;
       });
     }
-
-    
   }
-  
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(  
-  
-  
+    return Scaffold(
         body: SafeArea(
       child: Form(
-        
         key: _formKey,
         child: Stack(
-          
           children: [
-            
-            
             Container(
-              width: MediaQuery.of(context).size.width/2,
-            color: Color(0xFFF5F0FF),),
-             
+              width: MediaQuery.of(context).size.width / 2,
+              color: Color(0xFFF5F0FF),
+            ),
 
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //     begin: Alignment.topCenter,
-        //     end: Alignment.bottomCenter,
-        //     colors: 
-        //      Color(0xFFF5F0FF),
-        //   ),
-        // ),),
+            // decoration: BoxDecoration(
+            //   gradient: LinearGradient(
+            //     begin: Alignment.topCenter,
+            //     end: Alignment.bottomCenter,
+            //     colors:
+            //      Color(0xFFF5F0FF),
+            //   ),
+            // ),),
             // Background circle
             Positioned(
               top: 40,
@@ -129,10 +123,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-           
-             Positioned(
+
+            Positioned(
               top: 550,
-              right:10,
+              right: 10,
               child: Container(
                 width: 500,
                 height: 20,
@@ -142,8 +136,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-           
-           Positioned(
+
+            Positioned(
               bottom: 250,
               right: 350,
               child: Container(
@@ -151,52 +145,45 @@ class _LoginPageState extends State<LoginPage> {
                 height: 200,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color:  Color(0xffdcddff),
+                  color: Color(0xffdcddff),
                 ),
               ),
             ),
-          
 
             Row(
-              children: <Widget> [
-              
-               
+              children: <Widget>[
                 Expanded(
-                child: LoginScreenTopImage(),
-              ),
-              
+                  child: LoginScreenTopImage(),
+                ),
                 Container(
-               width: MediaQuery.of(context).size.width/2,
-               height: MediaQuery.of(context).size.height,
-                  
-                  
+                  width: MediaQuery.of(context).size.width / 2,
+                  height: MediaQuery.of(context).size.height,
                   margin: EdgeInsets.fromLTRB(0, 150, 20, 150),
                   padding: EdgeInsets.all(30),
                   decoration: BoxDecoration(
-                       
-                   
                     borderRadius: BorderRadius.circular(10),
                   ),
-      
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                       Container(
-              padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                'Email',
-                style: TextStyle(
-                   color: Color.fromARGB(255, 51, 53, 123),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      ), ) ,),
+                      Container(
+                        padding: const EdgeInsets.fromLTRB(30, 5, 30, 5),
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          'Email',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 51, 53, 123),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
                       SizedBox(height: 20),
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(5),
-                           color: Color(0xFFF5F0FF),
+                          color: Color(0xFFF5F0FF),
                         ),
                         child: TextFormField(
                           controller: _emailController,
@@ -218,22 +205,24 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                       Container(
-              padding: const EdgeInsets.fromLTRB(30, 10, 30, 5),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                'Password',
-                style: TextStyle(
-                   color: Color.fromARGB(255, 51, 53, 123),
-                      fontWeight: FontWeight.bold,
-                      fontSize:20,
-                      ), ) ,),
+                      Container(
+                        padding: const EdgeInsets.fromLTRB(30, 10, 30, 5),
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          'Password',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 51, 53, 123),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
                       SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(5),
-                           color: Color(0xFFF5F0FF),
+                          color: Color(0xFFF5F0FF),
                         ),
                         child: TextFormField(
                           controller: _passwordController,
@@ -273,16 +262,15 @@ class _LoginPageState extends State<LoginPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xff311B92),
                         ),
-                        
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-                    ],
-          ),          
+          ],
         ),
-      ));
+      ),
+    ));
   }
 }

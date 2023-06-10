@@ -8,6 +8,21 @@ import 'package:blink/dashboard/screens/AdminAccount/Challenges/QuizDisplay.dart
 import 'package:blink/dashboard/screens/AdminAccount/Challenges/QuizDisplay.dart';
 import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/createLesson.dart';
 import 'package:blink/dashboard/screens/AdminAccount/Challenges/createQuiz.dart';
+import 'package:blink/Dashboard/Screens/AdminAccount/profile/editProfile.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Lesson/LessonDisplay.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Lesson/LessonPage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Quiz/createQuiz.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Quiz/QuizDisplay.dart';
+import 'package:flutter_svg/flutter_svg.dart';                                                                                                
+import 'package:blink/dashboard/screens/AdminAccount/Challenges/QuizDisplay.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Challenges/QuizDisplay.dart';
+import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/createLesson.dart';
+import 'package:blink/dashboard/screens/AdminAccount/Quiz/createQuiz.dart';
+import 'package:blink/Auth/auth_controller/authController.dart';
+
+import 'package:blink/dashboard/screens/AdminAccount/Challenges/createQuiz.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
@@ -68,15 +83,15 @@ class SideMenu extends StatelessWidget {
             svgSrc: "assets/icons/menu_notification.svg",
             press: () {},
           ),
-          DrawerListTile(
-            title: "Profile",
-            svgSrc: "assets/icons/menu_profile.svg",
-            press: () {
-              Navigator.push(context, 
-              MaterialPageRoute(builder: (context)=> EditProfile()),
-              );
-            }
-          ),
+          // DrawerListTile(
+          //   title: "Profile",
+          //   svgSrc: "assets/icons/menu_profile.svg",
+          //   press: () {
+          //     Navigator.push(context, 
+          //     MaterialPageRoute(builder: (context)=> EditProfile()),
+          //     );
+          //   }
+          // ),
           // DrawerListTile(
           //   title: "Users",
           //   svgSrc: "assets/icons/menu_notification.svg",
@@ -95,11 +110,18 @@ class SideMenu extends StatelessWidget {
           //   }
           // ),
           DrawerListTile(
-            title: "Settings",
+            title: "Logout",
             svgSrc: "assets/icons/menu_setting.svg",
-            press: () {
+            press:(){
+              final auth = Auth();
+              auth.logout(context);
 
-            },
+            }
+
+           
+
+
+            
           ),
 
     ],

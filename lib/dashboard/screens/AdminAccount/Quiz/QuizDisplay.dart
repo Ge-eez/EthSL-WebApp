@@ -1,19 +1,11 @@
 import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
 import 'package:blink/Dashboard/constants.dart';
-
+import 'package:blink/dashboard/screens/AdminAccount/Quiz/QuizPage.dart';
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
-import 'LessonPage.dart';
-import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/createLesson.dart';
-import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/lessonForm.dart';
-import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
-import 'package:blink/Dashboard/constants.dart';
-import 'package:blink/dashboard/screens/AdminAccount/Lesson/LessonPage.dart';
-import 'package:flutter/material.dart';
-import 'package:blink/dashboard/responsive.dart';
-import 'package:blink/dashboard/screens/AdminAccount/Lesson/LessonPage.dart';
 
-class LessonDisplay extends StatelessWidget {
+
+class QuizDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,14 +34,8 @@ class LessonDisplay extends StatelessWidget {
                     child:Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ElevatedButton(
-                        onPressed: (){
-              Navigator.push(context, 
-              MaterialPageRoute(builder: (context)=> CreateLesson()),
-              
-              ); },  child:const Text('Add new Lesson',)),
-                    
-                        LessonPage()
+                       
+                        Quizpage()
                         ]
 
                 ))))))),
@@ -59,4 +45,3 @@ class LessonDisplay extends StatelessWidget {
     );
   }
 }
-

@@ -1,0 +1,1 @@
+const String API_URL = 'https://blink-backend-service.onrender.com/';

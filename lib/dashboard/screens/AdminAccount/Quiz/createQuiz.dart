@@ -1,19 +1,10 @@
 import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
 import 'package:blink/Dashboard/constants.dart';
-
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
-import 'LessonPage.dart';
-import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/createLesson.dart';
-import 'package:blink/Dashboard/Screens/AdminAccount/Lesson/lessonForm.dart';
-import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
-import 'package:blink/Dashboard/constants.dart';
-import 'package:blink/dashboard/screens/AdminAccount/Lesson/LessonPage.dart';
-import 'package:flutter/material.dart';
-import 'package:blink/dashboard/responsive.dart';
-import 'package:blink/dashboard/screens/AdminAccount/Lesson/LessonPage.dart';
+import 'quizForm.dart';
 
-class LessonDisplay extends StatelessWidget {
+class CreateQuiz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,20 +27,14 @@ class LessonDisplay extends StatelessWidget {
               color: bgColor,
               child: Center(
                 child: SingleChildScrollView(
-                child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: ConstrainedBox(constraints: BoxConstraints(),
+child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: ConstrainedBox(constraints: BoxConstraints(maxWidth: 800),
                     child:Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ElevatedButton(
-                        onPressed: (){
-              Navigator.push(context, 
-              MaterialPageRoute(builder: (context)=> CreateLesson()),
-              
-              ); },  child:const Text('Add new Lesson',)),
-                    
-                        LessonPage()
+                       
+                        QuizForm()
                         ]
 
                 ))))))),
@@ -59,4 +44,3 @@ class LessonDisplay extends StatelessWidget {
     );
   }
 }
-
