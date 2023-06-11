@@ -1,6 +1,6 @@
 import 'package:blink/Dashboard/Screens/main/components/side_menu.dart';
 import 'package:blink/Dashboard/constants.dart';
-import 'package:blink/dashboard/screens/AdminAccount//Challenges/QuizPage.dart';
+import 'QuizPage.dart';
 import 'package:blink/dashboard/screens/AdminAccount/Challenges/createQuiz.dart';
 import 'package:flutter/material.dart';
 import 'package:blink/dashboard/responsive.dart';
@@ -50,7 +50,7 @@ class QuizDisplay extends StatelessWidget {
                     
                     
                        
-                        Quizpage()
+                        QuizPage()
                        
                         ]
 
